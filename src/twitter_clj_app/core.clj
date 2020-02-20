@@ -32,7 +32,7 @@
 
 (def consumer-secret (env-or-throw :twitter-api-secret))
 
-(def test-png (io/file "resources/test.png"))
+(def test-txt (io/file "resources/test.txt"))
 
 (defn- encode-app-only-key
   "Given a consumer-key and consumer-secret, concatenates and Base64
@@ -127,6 +127,13 @@
    (twitter-call :get
                  timeline-endpoint
                  (merge-with into query-params {:query-params {"screen_name" screen-name}}))))
+
+(defn multipart-to-localhost
+  "Upload a file to a local server"
+  []
+  (client/post "http://localhost:3000/multipart"
+               {:multipart [{:name "title" :content "Test image"}
+                            {:name "test.txt" :content test-txt}]}))
 
 (defn -main
   "I don't do a whole lot ... yet."
