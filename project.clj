@@ -7,7 +7,9 @@
                  [org.clojure/data.json "0.2.7"]
                  [org.clojure/data.codec "0.1.1"]
                  [clj-http "3.10.0"]
-                 [clj-oauth "1.5.5"]]
+                 [clj-oauth "1.5.5"]
+                 [cheshire "5.10.0"]
+                 [environ "1.1.0"]]
   :main ^:skip-aot twitter-clj-app.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
